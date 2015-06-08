@@ -12,7 +12,7 @@ when it comes to talking to your API. Basically it's a replacement for Alamofire
     "meta".get(parameters: ["since": "2015-01-02"]) { response in
         println(response.responseJSON)
     }
-    
+
     // Some parsing (I'd recommend you should put parsing as an extension on your model classes).
     "users".get { response in
         if let users = response.responseJSON as? [NSDictionary] {
@@ -32,7 +32,8 @@ needs. Finally, NSURLSession is quite a nice API, so it doesn't really need much
 
 ## What to look at
 
-This is an example Xcode project that uses Wattle. Look at `ViewController.swift` to see how to use it. Look in the `Wattle` folder to see the networking code. It's only 125 lines of code at last count! Super simple.
+This is an example Xcode project that uses Wattle. Look at `Networking/ViewController.swift` to see how to use it.
+Look in the `Networking/Wattle` folder to see the networking code. It's only 125 lines of code at last count! Super simple.
 
 ## Why the name?
 
