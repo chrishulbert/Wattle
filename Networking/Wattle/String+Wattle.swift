@@ -45,7 +45,17 @@ extension String {
             bodyParameters: bodyParameters,
             headers: nil)
         let task = NSURLSession.sharedWattleSession.dataTaskWithRequest(request) {
-            data, response, error in
+            data, response, sessionError in
+            
+            // Check for a non-200 response, as NSURLSession doesn't raise that as an error.
+            var error = sessionError
+            if let httpResponse = response as? NSHTTPURLResponse {
+                if httpResponse.statusCode < 200 || httpResponse.statusCode >= 300 {
+                    let description = "HTTP response was \(httpResponse.statusCode)"
+                    error = NSError(domain: "Custom", code: 0, userInfo: [NSLocalizedDescriptionKey: description])
+                }
+            }
+            
             let wrappedResponse = WTLResponse(data: data, response: response, error: error)
             completion(wrappedResponse)
         }
