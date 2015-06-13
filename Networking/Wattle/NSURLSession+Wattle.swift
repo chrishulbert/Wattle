@@ -15,7 +15,7 @@ extension NSURLSession {
         /// The singleton URL session, configured to use our custom config and delegate.
         static let session = NSURLSession(
             configuration: NSURLSessionConfiguration.wattleSessionConfiguration(),
-            delegate: WTLURLSessionDelegate.sharedDelegate,
+            delegate: WTLURLSessionDelegate(), // Delegate is retained by the session.
             delegateQueue: NSOperationQueue.mainQueue())
     }
     

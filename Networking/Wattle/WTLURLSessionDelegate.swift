@@ -9,9 +9,6 @@
 import Foundation
 
 class WTLURLSessionDelegate: NSObject, NSURLSessionDelegate {
-
-    /// The singleton.
-    static let sharedDelegate = WTLURLSessionDelegate()
     
     // MARK: - NSURLSessionDelegate
 
