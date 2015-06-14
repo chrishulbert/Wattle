@@ -8,34 +8,34 @@
 
 import Foundation
 
-typealias WTLCompletion = WTLResponse -> Void
-
 extension String {
-    
+
+    typealias NetworkingCompletion = WTLResponse -> Void
+
     /// Simply does an HTTP GET/POST/PUT/DELETE using the receiver as the endpoint eg 'users'.
     /// This endpoint is appended to the baseURL which is specified in Constants below.
     /// These should be your main entry-point into Wattle from the rest of your app.
     /// It's an exercise to the reader to extend these to allow custom headers if you require.
     /// Also, if you think this string extension technique is a tad twee (i'll concede that's possible) you can of course
     /// make these as static functions of a class of your choosing.
-    func get(parameters: [String: String]? = nil, completion: WTLCompletion) {
+    func get(parameters: [String: String]? = nil, completion: NetworkingCompletion) {
         requestWithMethod("GET", queryParameters: parameters, completion: completion)
     }
-    func post(parameters: NSDictionary? = nil, completion: WTLCompletion) {
+    func post(parameters: NSDictionary? = nil, completion: NetworkingCompletion) {
         requestWithMethod("POST", bodyParameters: parameters, completion: completion)
     }
-    func put(parameters: NSDictionary? = nil, completion: WTLCompletion) {
+    func put(parameters: NSDictionary? = nil, completion: NetworkingCompletion) {
         requestWithMethod("PUT", bodyParameters: parameters, completion: completion)
     }
-    func delete(parameters: NSDictionary? = nil, completion: WTLCompletion) {
+    func delete(parameters: NSDictionary? = nil, completion: NetworkingCompletion) {
         requestWithMethod("DELETE", bodyParameters: parameters, completion: completion)
     }
 
     /// Used to contain the common code for GET and POST and DELETE and PUT.
-    func requestWithMethod(method: String,
+    private func requestWithMethod(method: String,
         queryParameters: [String: String]? = nil,
         bodyParameters: NSDictionary? = nil,
-        completion: WTLCompletion) {
+        completion: NetworkingCompletion) {
         /// Tack on the endpoint to the base URL.
         let URL = NSURL(string: self, relativeToURL: Constants.baseURL)!
         // Create the request, with the JSON payload or querystring if necessary.
