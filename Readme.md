@@ -3,26 +3,26 @@
 Wattle is an example of a super-simple Swift wrapper for NSURLConnection that makes your life smoother
 when it comes to talking to your API. Basically it's a replacement for Alamofire. It looks like this:
 
-    // Simplest possible example.
-    "emojis".get { response in
-        println(response.responseJSON)
-    }
-    
-    // A querystring param.
-    "meta".get(parameters: ["since": "2015-01-02"]) { response in
-        println(response.responseJSON)
-    }
-
-    // Some parsing (I'd recommend you should put parsing as an extension on your model classes).
-    "users".get { response in
-        if let users = response.responseJSON as? [NSDictionary] {
-            let names = users.map { $0["login"]! }
-            println(names)
-        } else {
-            println("Error: \(response.error)")
+        // Simplest possible example.
+        "emojis".get { response in
+            print(response.responseJSON)
         }
-    }
-	
+        
+        // A querystring param.
+        "meta".get(["since": "2015-01-02"]) { response in
+            print(response.responseJSON)
+        }	
+
+        // Some parsing (i'd recommend you should put parsing as an extension on your model classes).
+        "users".get { response in
+            if let users = response.responseJSON as? [NSDictionary] {
+                let names = users.map { $0["login"]! }
+                print(names)
+            } else {
+                print("Error: \(response.error)")
+            }
+        }
+
 This isn't a Cocoapod, rather the idea is that you'd use this as an example of how to build your own wrapper, or
 simply copy-and-paste the Wattle folder into your project to start with, and customise it from that point as your
 requirements evolve. Hopefully this way, you'll get a better understanding of how it works (and it's only 125 lines of code anyway) and it'll 'fit' better with your needs.

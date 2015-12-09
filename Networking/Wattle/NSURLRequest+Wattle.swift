@@ -22,7 +22,7 @@ extension NSURLRequest {
         let actualURL: NSURL
         if let queryParameters = queryParameters {
             let components = NSURLComponents(URL: URL, resolvingAgainstBaseURL: true)!
-            components.queryItems = map(queryParameters) { (key, value) in NSURLQueryItem(name: key, value: value) }
+            components.queryItems = queryParameters.map { (key, value) in NSURLQueryItem(name: key, value: value) }
             actualURL = components.URL!
         } else {
             actualURL = URL
@@ -35,7 +35,7 @@ extension NSURLRequest {
         // Add any body JSON params (for POSTs).
         if let bodyParameters = bodyParameters {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.HTTPBody = NSJSONSerialization.dataWithJSONObject(bodyParameters, options: nil, error: nil)
+            request.HTTPBody = try? NSJSONSerialization.dataWithJSONObject(bodyParameters, options: [])
         }
         
         // Add any extra headers if given.
