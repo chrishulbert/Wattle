@@ -22,7 +22,7 @@ struct WTLResponse {
     }
     var responseJSON: AnyObject? {
         if let data = data {
-            return NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)
+            return try? NSJSONSerialization.JSONObjectWithData(data, options: [])
         } else {
             return nil
         }
