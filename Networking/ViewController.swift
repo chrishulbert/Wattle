@@ -15,22 +15,22 @@ class ViewController: UIViewController {
 
         // Simplest possible example.
         "emojis".get { response in
-            println(response.responseJSON)
+            print(response.responseJSON)
         }
 
         // Some parsing (i'd recommend you should put parsing as an extension on your model classes).
         "users".get { response in
             if let users = response.responseJSON as? [NSDictionary] {
                 let names = users.map { $0["login"]! }
-                println(names)
+                print(names)
             } else {
-                println("Error: \(response.error)")
+                print("Error: \(response.error)")
             }
         }
         
         // A querystring param.
         "meta".get(parameters: ["since": "2015-01-02"]) { response in
-            println(response.responseJSON)
+            print(response.responseJSON)
         }
 
     }

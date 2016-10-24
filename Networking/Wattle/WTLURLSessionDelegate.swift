@@ -8,23 +8,22 @@
 
 import Foundation
 
-class WTLURLSessionDelegate: NSObject, NSURLSessionDelegate {
+class WTLURLSessionDelegate: NSObject, URLSessionDelegate {
     
     // MARK: - NSURLSessionDelegate
-
-    func URLSession(session: NSURLSession,
-        didReceiveChallenge challenge: NSURLAuthenticationChallenge,
-        completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential!) -> Void) {
-     
+    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        
         // For example, you may want to override this to accept some self-signed certs here.
         if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust &&
-                Constants.selfSignedHosts.contains(challenge.protectionSpace.host) {
+            Constants.selfSignedHosts.contains(challenge.protectionSpace.host) {
             // Allow the self-signed cert.
-            let credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust)
-            completionHandler(.UseCredential, credential)
+            guard let serverTrust = challenge.protectionSpace.serverTrust else { print("Invalid server trust."); return }
+            let credential = URLCredential(trust: serverTrust)
+            completionHandler(.useCredential, credential)
         } else {
             // You *have* to call completionHandler either way, so call it to do the default action.
-            completionHandler(.PerformDefaultHandling, nil)
+            completionHandler(.performDefaultHandling, nil)
         }
     }
     

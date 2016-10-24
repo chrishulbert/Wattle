@@ -1,5 +1,5 @@
 //
-//  NSURLRequest+Wattle.swift
+//  URLRequest+Wattle.swift
 //  Networking
 //
 //  Created by Chris Hulbert on 8/06/2015.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension NSURLRequest {
+extension URLRequest {
     
     /// Helper for making a URL request. This is to be used internally by the string extension
     /// in wattle, not by the rest of your app.
@@ -16,26 +16,26 @@ extension NSURLRequest {
     /// Adds any headers specific to only this request too if provided. Any headers you use all the time should be in
     /// NSURLSessionConfiguration.wattleSessionConfiguration.
     /// You may want to extend this if your requests need any further customising, eg timeouts etc.
-    class func requestWithURL(URL: NSURL, method: String, queryParameters: [String: String]?, bodyParameters: NSDictionary?, headers: [String: String]?) -> NSURLRequest {
-
+    static func request(url: URL, method: String, queryParameters: [String: String]?, bodyParameters: NSDictionary?, headers: [String: String]?) -> URLRequest {
+        
         // If there's a querystring, append it to the URL.
-        let actualURL: NSURL
+        let actualURL: URL
         if let queryParameters = queryParameters {
-            let components = NSURLComponents(URL: URL, resolvingAgainstBaseURL: true)!
-            components.queryItems = map(queryParameters) { (key, value) in NSURLQueryItem(name: key, value: value) }
-            actualURL = components.URL!
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
+            components.queryItems = queryParameters.map({ (key, value) in URLQueryItem(name: key, value: value) })
+            actualURL = components.url!
         } else {
-            actualURL = URL
+            actualURL = url
         }
         
         // Make the request for the given method.
-        let request = NSMutableURLRequest(URL: actualURL)
-        request.HTTPMethod = method
+        var request = URLRequest(url: actualURL)
+        request.httpMethod = method
         
         // Add any body JSON params (for POSTs).
         if let bodyParameters = bodyParameters {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.HTTPBody = NSJSONSerialization.dataWithJSONObject(bodyParameters, options: nil, error: nil)
+            request.httpBody = try? JSONSerialization.data(withJSONObject: bodyParameters, options: [])
         }
         
         // Add any extra headers if given.
@@ -47,5 +47,4 @@ extension NSURLRequest {
         
         return request
     }
-    
 }
