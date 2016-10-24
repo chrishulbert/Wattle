@@ -13,10 +13,10 @@
 		83A559021B25841400AB11AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83A559011B25841400AB11AE /* Images.xcassets */; };
 		83A559051B25841400AB11AE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A559031B25841400AB11AE /* LaunchScreen.xib */; };
 		83A559111B25841400AB11AE /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A559101B25841400AB11AE /* NetworkingTests.swift */; };
-		83A5591C1B2584D600AB11AE /* NSURLSessionConfiguration+Wattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5591B1B2584D600AB11AE /* NSURLSessionConfiguration+Wattle.swift */; };
-		83A5591E1B2587BC00AB11AE /* NSURLSession+Wattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5591D1B2587BC00AB11AE /* NSURLSession+Wattle.swift */; };
+		83A5591C1B2584D600AB11AE /* URLSessionConfiguration+Wattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5591B1B2584D600AB11AE /* URLSessionConfiguration+Wattle.swift */; };
+		83A5591E1B2587BC00AB11AE /* URLSession+Wattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5591D1B2587BC00AB11AE /* URLSession+Wattle.swift */; };
 		83A559201B2589EC00AB11AE /* WTLURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A5591F1B2589EC00AB11AE /* WTLURLSessionDelegate.swift */; };
-		83A559221B258CF100AB11AE /* NSURLRequest+Wattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A559211B258CF100AB11AE /* NSURLRequest+Wattle.swift */; };
+		83A559221B258CF100AB11AE /* URLRequest+Wattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A559211B258CF100AB11AE /* URLRequest+Wattle.swift */; };
 		83A559241B258F4300AB11AE /* String+Wattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A559231B258F4300AB11AE /* String+Wattle.swift */; };
 		83A559281B25902200AB11AE /* WTLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A559271B25902200AB11AE /* WTLResponse.swift */; };
 /* End PBXBuildFile section */
@@ -42,10 +42,10 @@
 		83A5590A1B25841400AB11AE /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83A5590F1B25841400AB11AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83A559101B25841400AB11AE /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
-		83A5591B1B2584D600AB11AE /* NSURLSessionConfiguration+Wattle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLSessionConfiguration+Wattle.swift"; sourceTree = "<group>"; };
-		83A5591D1B2587BC00AB11AE /* NSURLSession+Wattle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLSession+Wattle.swift"; sourceTree = "<group>"; };
+		83A5591B1B2584D600AB11AE /* URLSessionConfiguration+Wattle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSessionConfiguration+Wattle.swift"; sourceTree = "<group>"; };
+		83A5591D1B2587BC00AB11AE /* URLSession+Wattle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+Wattle.swift"; sourceTree = "<group>"; };
 		83A5591F1B2589EC00AB11AE /* WTLURLSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WTLURLSessionDelegate.swift; sourceTree = "<group>"; };
-		83A559211B258CF100AB11AE /* NSURLRequest+Wattle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURLRequest+Wattle.swift"; sourceTree = "<group>"; };
+		83A559211B258CF100AB11AE /* URLRequest+Wattle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+Wattle.swift"; sourceTree = "<group>"; };
 		83A559231B258F4300AB11AE /* String+Wattle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Wattle.swift"; sourceTree = "<group>"; };
 		83A559271B25902200AB11AE /* WTLResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WTLResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,10 +128,10 @@
 		83A5591A1B25847500AB11AE /* Wattle */ = {
 			isa = PBXGroup;
 			children = (
-				83A5591B1B2584D600AB11AE /* NSURLSessionConfiguration+Wattle.swift */,
+				83A5591B1B2584D600AB11AE /* URLSessionConfiguration+Wattle.swift */,
 				83A5591F1B2589EC00AB11AE /* WTLURLSessionDelegate.swift */,
-				83A5591D1B2587BC00AB11AE /* NSURLSession+Wattle.swift */,
-				83A559211B258CF100AB11AE /* NSURLRequest+Wattle.swift */,
+				83A5591D1B2587BC00AB11AE /* URLSession+Wattle.swift */,
+				83A559211B258CF100AB11AE /* URLRequest+Wattle.swift */,
 				83A559271B25902200AB11AE /* WTLResponse.swift */,
 				83A559231B258F4300AB11AE /* String+Wattle.swift */,
 			);
@@ -240,10 +240,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83A5591E1B2587BC00AB11AE /* NSURLSession+Wattle.swift in Sources */,
-				83A5591C1B2584D600AB11AE /* NSURLSessionConfiguration+Wattle.swift in Sources */,
+				83A5591E1B2587BC00AB11AE /* URLSession+Wattle.swift in Sources */,
+				83A5591C1B2584D600AB11AE /* URLSessionConfiguration+Wattle.swift in Sources */,
 				83A559201B2589EC00AB11AE /* WTLURLSessionDelegate.swift in Sources */,
-				83A559221B258CF100AB11AE /* NSURLRequest+Wattle.swift in Sources */,
+				83A559221B258CF100AB11AE /* URLRequest+Wattle.swift in Sources */,
 				83A558FD1B25841400AB11AE /* ViewController.swift in Sources */,
 				83A559281B25902200AB11AE /* WTLResponse.swift in Sources */,
 				83A558FB1B25841400AB11AE /* AppDelegate.swift in Sources */,

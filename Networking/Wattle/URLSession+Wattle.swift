@@ -1,5 +1,5 @@
 //
-//  NSURLSession+Wattle.swift
+//  URLSession+Wattle.swift
 //  Networking
 //
 //  Created by Chris Hulbert on 8/06/2015.

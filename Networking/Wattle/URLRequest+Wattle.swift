@@ -1,5 +1,5 @@
 //
-//  NSURLRequest+Wattle.swift
+//  URLRequest+Wattle.swift
 //  Networking
 //
 //  Created by Chris Hulbert on 8/06/2015.
