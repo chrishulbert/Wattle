@@ -12,25 +12,25 @@ import Foundation
 /// so it'll be easy for you to add any helpers/fields as you need it.
 struct WTLResponse {
     // Actual fields.
-    let data: NSData!
-    let response: NSURLResponse!
-    var error: NSError?
+    let data: Data!
+    let response: URLResponse!
+    var error: Error?
     
     // Helpers.
-    var HTTPResponse: NSHTTPURLResponse! {
-        return response as? NSHTTPURLResponse
+    var HTTPResponse: HTTPURLResponse! {
+        return response as? HTTPURLResponse
     }
-    var responseJSON: AnyObject? {
+    var responseJSON: Any? {
         if let data = data {
-            return NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil)
+            return try? JSONSerialization.jsonObject(with: data, options: [])
         } else {
             return nil
         }
     }
+    
     var responseString: String? {
-        if let data = data,
-            string = NSString(data: data, encoding: NSUTF8StringEncoding) {
-            return String(string)
+        if let data = data, let string = String(data: data, encoding: .utf8) {
+            return string
         } else {
             return nil
         }
